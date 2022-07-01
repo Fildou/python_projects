@@ -1,0 +1,35 @@
+{% extends 'partials/base.html' %}
+{% block title %}Borrowed{% endblock %}
+
+{% block content %}
+{% include 'partials/topside.html' %}
+<div class="row my-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col" style="background-color: #ffb800;">Item</th>
+                    <th scope="col" style="background-color: #ffb800;">Item PN</th>
+                    <th scope="col" style="background-color: #ffb800;">Odered by</th>
+                    <th scope="col" style="background-color: #ffb800;">Date</th>
+                    <th scope="col" style="background-color: #ffb800;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for borrowed in borrowed %}
+                <tr>
+                    <td>{{ borrowed.item.item_name }}</td>
+                    <td>{{ borrowed.item.item_PN }}</td>
+                    <td>{{ borrowed.user.username }}</td>
+                    <td>{{ borrowed.date }}</td>
+                    <td>
+                         <a href="{% url 'dashboard-detail' borrowed.item.item_PN %}" class="btn btn-secondary">Details</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

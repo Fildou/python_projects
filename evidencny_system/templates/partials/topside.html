@@ -1,0 +1,36 @@
+<div class="container">
+        <div class="row mt-4">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header text-white" style="background-color: #ffb800;">
+                        Navigation
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a class="text-decoration-none text-dark" href="{% url 'dashboard-scan' %}">
+                                    <div class="card my-card shadow text-center p-3">
+                                        <h4>Scan <i class="fas fa-qrcode"></i></h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="text-decoration-none text-dark" href="{% url 'dashboard-index' %}">
+                                    <div class="card my-card shadow text-center p-3">
+                                        <h4>Inventory <i class="fas fa-box"></i></h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="text-decoration-none text-dark" href="{% url 'dashboard-borrowed' %}">
+                                    <div class="card my-card shadow text-center p-3">
+                                        <h4>Borrowed items <i class="fas fa-list-alt"></i></h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

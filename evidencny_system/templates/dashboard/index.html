@@ -1,0 +1,42 @@
+{% extends 'partials/base.html' %}
+{% block title %}Inventory{% endblock %}
+
+{% block content %}
+{% include 'partials/topside.html' %}
+<br>
+<h2>All items:</h2>
+<div class="row mt-4">
+    <div class="col">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col" style="background-color: #ffb800;">Item Name</th>
+                    <th scope="col" style="background-color: #ffb800;">Item PN</th>
+                    <th scope="col" style="background-color: #ffb800;">Item Type</th>
+                    <th scope="col" style="background-color: #ffb800;">Owned by</th>
+                    <th scope="col" style="background-color: #ffb800;">In stock</th>
+                    <th scope="col" style="background-color: #ffb800;">Location</th>
+                    <th scope="col" style="background-color: #ffb800;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in item %}
+                <tr>
+                    <td>{{ item.item_name }}</td>
+                    <td>{{ item.item_PN }}</td>
+                    <td>{{ item.item_type }}</td>
+                    <td>{{ item.team }}</td>
+                    <td>{{ item.item_stock }}</td>
+                    <td>{{ item.location }}</td>
+                    {% if item.item_stock == 'Yes' %}
+                    <td>
+                        <a href="{% url 'dashboard-detail' item.item_PN %}" class="btn btn-secondary">Details</a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

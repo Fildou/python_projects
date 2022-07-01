@@ -1,0 +1,38 @@
+{% extends 'partials/base.html' %}
+{% block title %}Inventory{% endblock %}
+
+{% block content %}
+{% include 'partials/topside.html' %}
+<head>
+  <title>QR Code Reader using Instascan</title>
+  <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+</head>
+
+<div class="row mt-4">
+    <div class="col-md-2">
+    </div>
+    <div class="col">
+      <video id="preview"></video>
+      <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        if (content.match(/^https?:\/\//i)) {
+        window.open(content);
+        }
+        console.log(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+      </script>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+{% endblock %}
